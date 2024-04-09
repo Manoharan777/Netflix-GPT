@@ -1,35 +1,60 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { validateData } from "../utils/validate";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 const Login = () => {
-const [isSignInForm,setIsSignInForm] = useState(true);
-const [errMessage,setErrMessage] = useState(null);
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errMessage, setErrMessage] = useState(null);
 
-const email = useRef(null);
-const password = useRef(null);
-const fullName  =useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const fullName = useRef(null);
 
-const handleformsubmission = () => {
-  // Check if it's sign-up form or sign-in form
-  if (isSignInForm) {
-    // For sign-in, validate email and password only
-    const message = validateData(email.current.value, password.current.value);
+  const handleFormSubmission = () => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const fullNameValue = fullName.current ? fullName.current.value : "";
+
+    let message = validateData(emailValue, passwordValue);
     setErrMessage(message);
-  } else {
-    // For sign-up, validate email, password, and full name
-    const message = validateData(
-      email.current.value,
-      password.current.value,
-      fullName.current.value
-    );
-    setErrMessage(message);
-  }
-};
-
-    const handleToggleSignIn = () => {
-setIsSignInForm(!isSignInForm);
+    if (!isSignInForm && !fullNameValue) {
+      return setErrMessage("Name is Required");
     }
+
+    if (message) return; //msg is there return no need to go further process.
+
+    if (!isSignInForm) {
+      //sign-up logic
+      createUserWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          setErrMessage(errorMessage);
+        });
+    } else {
+      //sign-in logic
+      signInWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("successfull login", user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          setErrMessage(errorMessage);
+        });
+    }
+  };
+
+  const handleToggleSignIn = () => {
+    setIsSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <Header />
@@ -70,7 +95,7 @@ setIsSignInForm(!isSignInForm);
         />
         <p className="text-red-700 font-bold text-xl  ">{errMessage}</p>
         <button
-          onClick={handleformsubmission}
+          onClick={handleFormSubmission}
           className="p-4 my-6 bg-red-700  rounded-md w-full"
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
