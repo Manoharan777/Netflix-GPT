@@ -37,7 +37,7 @@ setIsSignInForm(!isSignInForm);
         <img
           src="https://i.redd.it/zjgs096khv591.jpg"
           alt="netflix-bg"
-          className="w-full"
+          className="w-full "
         />
       </div>
 
