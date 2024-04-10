@@ -20,7 +20,7 @@ const Login = () => {
   const handleButtonClick = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
-    if (!name.current.value) return setErrorMessage("Name is Required");
+    if ( !isSignInForm && !name.current.value ) return setErrorMessage("Name is Required");
     if (message) return;
 
     if (!isSignInForm) {
