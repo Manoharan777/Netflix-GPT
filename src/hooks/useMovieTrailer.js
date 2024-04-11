@@ -8,6 +8,8 @@ const useMovieTrailer = (movieId) => {
   const movieTrailerID = useSelector(
     (store) => store.movies?.trailerVideos?.key
   );
+
+    const trailermovie = useSelector((store) => store.movies.trailerVideos);
  // console.log("trailerID", movieTrailerID);
   const getMovieVideos = async () => {
     const response = await fetch(
@@ -23,8 +25,9 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    getMovieVideos();
+   if (!trailermovie) getMovieVideos();
   }, []);
+  
   return movieTrailerID;
 };
 

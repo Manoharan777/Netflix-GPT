@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../utils/moviesSlice";
 
 const useUpcomingMovies = () => {
   //Fetch Data from TMBD Api and update the store
   const dispatch = useDispatch();
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
   const getUpcomingeMovies = async () => {
     const response = await fetch(
       "https://api.themoviedb.org/3/movie/upcoming?page=1",
@@ -13,11 +14,10 @@ const useUpcomingMovies = () => {
     );
     const data = await response.json();
     dispatch(addUpcomingMovies(data.results));
-   // console.log(" upcoming movies result = ", data.results);
   };
 
   useEffect(() => {
-    getUpcomingeMovies();
+    if (!upcomingMovies) getUpcomingeMovies();
   }, []);
 };
 export default useUpcomingMovies;
