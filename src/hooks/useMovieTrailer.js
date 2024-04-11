@@ -8,7 +8,7 @@ const useMovieTrailer = (movieId) => {
   const movieTrailerID = useSelector(
     (store) => store.movies?.trailerVideos?.key
   );
-  console.log("trailerID", movieTrailerID);
+ // console.log("trailerID", movieTrailerID);
   const getMovieVideos = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/videos`,

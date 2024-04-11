@@ -3,8 +3,9 @@ export const NETFLIX_LOGO =
 export const USER_AVATAR =
   "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 export const NETFLIX_bG_IMG =
-    "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+  "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
+export const MOVIE_POSTER_CDN = "https://image.tmdb.org/t/p/w500";
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -12,4 +13,4 @@ export const API_OPTIONS = {
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MWI4YjBjZjk0ODAwYjU5NDkzZTYwMWQ2MDE2Nzk4MSIsInN1YiI6IjY2MTYyNTE3YTU3OWY5MDE2MjJmNjI2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qJCcfZhB0B89zDbmrzR7_0yrJ0Jdg5i_UXv1Yexd9Q0",
   },
-};    
+};

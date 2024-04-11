@@ -13,7 +13,7 @@ const getNowPlayingMovies = async () => {
   );
   const data = await response.json();
   dispatch(addNowPlayingMovies(data.results));
-  //console.log("result = ", data.results);
+//console.log("Now playing videos = ", data.results);
 };
 
 useEffect(() => {
