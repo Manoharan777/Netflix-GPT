@@ -52,13 +52,13 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={NETFLIX_LOGO} alt="logo" />
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between ">
+      <img className="w-44 mx-auto md:mx-0" src={NETFLIX_LOGO} alt="logo" />
       {user && (
         <div className="flex p-2  mx-2 items-center">
           {langToggle && (
             <select
-              className="p-2 mx-2 py-3 bg-gray-900 text-white rounded-md"
+              className="p-2 mx-2 py-3 bg-gray-900 text-white rounded-md "
               onChange={handleLang}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (

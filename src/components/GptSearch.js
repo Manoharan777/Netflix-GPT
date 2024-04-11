@@ -1,18 +1,22 @@
-import React from 'react'
-import GptSearchBar from './GptSearchBar'
-import GptSuggestion from './GptSuggestion'
+import React from "react";
+import GptSearchBar from "./GptSearchBar";
+import GptSuggestion from "./GptSuggestion";
 import { NETFLIX_bG_IMG } from "../utils/constants";
 
 const GptSearch = () => {
-  return (
+  return(
+  <>
     <div>
       <div className="fixed -z-10">
-        <img src={NETFLIX_bG_IMG} alt="logo" />
+        <img className="md:w-screen  h-screen object-cover" src={NETFLIX_bG_IMG} alt="logo" />
       </div>
-      <GptSearchBar />
-      <GptSuggestion />
+      <div className="pt-[30%] md:p-0">
+        <GptSearchBar />
+        <GptSuggestion />
+      </div>
     </div>
-  );
-}
+  </>
+  )
+};
 
-export default GptSearch
+export default GptSearch;
