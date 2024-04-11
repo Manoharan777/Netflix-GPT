@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import {toggleShowGptView} from "../utils/gptSlice";
 import { NETFLIX_LOGO } from "../utils/constants";
 
 const Header = () => {
@@ -38,11 +39,17 @@ const Header = () => {
     });
     return () => subscribe();
   }, []);
+
+const handleGptSearch = () => {
+  dispatch(toggleShowGptView());
+}
+
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44" src={NETFLIX_LOGO} alt="logo" />
       {user && (
         <div className="flex p-2 items-center">
+          <button className="p-2 mx-2 bg- bg-purple-800 text-white rounded " onClick={handleGptSearch}>GPT Search</button>
           <img className="w-12 h-12 p-2" alt="usericon" src={user?.photoURL} />{" "}
           <span className="py-2 m-2 text-white text-lg font-bold">
             {user.displayName}
