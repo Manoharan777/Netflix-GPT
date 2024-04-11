@@ -14,3 +14,9 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MWI4YjBjZjk0ODAwYjU5NDkzZTYwMWQ2MDE2Nzk4MSIsInN1YiI6IjY2MTYyNTE3YTU3OWY5MDE2MjJmNjI2NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qJCcfZhB0B89zDbmrzR7_0yrJ0Jdg5i_UXv1Yexd9Q0",
   },
 };
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "tamil", name: "Tamil" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
