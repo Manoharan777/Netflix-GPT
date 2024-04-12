@@ -35,10 +35,10 @@ const GptSearchBar = () => {
       model: "gpt-3.5-turbo",
     });
 
-    console.log(
-      "gptResult = ",
-      getMovieSuggestion.choices?.[0]?.message.content
-    );
+    // console.log(
+    //   "gptResult = ",
+    //   getMovieSuggestion.choices?.[0]?.message.content
+    // );
     const gptMovies =
       getMovieSuggestion.choices?.[0]?.message.content.split(",");
 
@@ -47,7 +47,7 @@ const GptSearchBar = () => {
 
     const tmdbResult = await Promise.all(promiseArray);
 
-    console.log("tmdb res = ",tmdbResult);
+    //console.log("tmdb res = ",tmdbResult);
     dispatch(addGptMoviesResult(tmdbResult));
     dispatch(addGptMoviesName(gptMovies));
 
@@ -65,13 +65,13 @@ const GptSearchBar = () => {
       <form className=" text-center" onSubmit={(e) => e.preventDefault()}>
         <input
           value={inputdata}
-          className="p-2  m-2 border border-black rounded-md w-[430px] h-[50px] text-black"
+          className="p-2  m-2 ml-6 border border-black rounded-md w-[430px] h-[50px] text-black"
           type="text"
           placeholder={Lang[langSelection].gptSearchPlaceholder}
-          onChange={(e)=> setInputData(e.target.value)}
+          onChange={(e) => setInputData(e.target.value)}
         />
         <button
-          className="p-2 px-4 py-3 m-2 bg-red-700 text-white rounded-md"
+          className="p-2 px-4 py-3 m-2 ml-14 md:-ml-0 bg-red-700 text-white rounded-md"
           onClick={handleSearch}
         >
           {Lang[langSelection].search}
