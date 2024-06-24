@@ -5,8 +5,9 @@ import { auth } from "../utils/firebase";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { addGptMoviesName, addGptMoviesResult, toggleShowGptView } from "../utils/gptSlice";
-import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import netflix from "../utils/asset/netfligpt_logo.png"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Header = () => {
   };
   return (
     <div className="absolute  w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between ">
-      <img className="w-44 mx-auto  md:mx-0" src={NETFLIX_LOGO} alt="logo" />
+      <img className="w-44 mx-auto  md:mx-0" src={netflix} alt="logo" />
       {user && (
         <div className="flex p-2 mx-auto md:mx-2 items-center text-white">
           {langToggle && (
